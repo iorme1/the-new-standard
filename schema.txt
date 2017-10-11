@@ -1,0 +1,18 @@
+User
+  ...
+
+
+Standard
+  subject:string
+  category:string
+  description:string
+
+UserStandard
+
+  belong_to :user
+  belongs_to :standard
+
+  attained:boolean
+  notes:text
+  assignments:text
+

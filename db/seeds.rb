@@ -17,6 +17,10 @@ users = User.all
   )
 end
 
-  puts "Seeds finished"
-  puts "#{User.count} users created"
-  puts "#{Student.count} students created"
+ENGLISH_STANDARDS = [
+
+]
+
+puts "Seeds finished"
+puts "#{User.count} users created"
+puts "#{Student.count} students created"
