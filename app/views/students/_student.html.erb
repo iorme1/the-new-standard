@@ -1,0 +1,7 @@
+<% @students.each do |student| %>
+  <tr>
+    <td><strong><%= student.name %></strong></td>
+    <td><%= "Subjects" %></td>
+    <td><strong><%= link_to "Remove Student", user_student_path(current_user, student), method: :delete, class: "btn btn-danger btn-sm" %></strong></td>
+  </tr>
+<% end %>
