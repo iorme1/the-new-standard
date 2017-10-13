@@ -1,0 +1,42 @@
+<h3>Student details</h3>
+
+<%= @student.name %>
+
+<h4>Standards attainment</h4>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th><%= @standards.first.first %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @standards.each do |subject, standards| %>
+      <% standards.each do |standard| %>
+        <tr>
+          <td>
+            <h4><%= standard.description %></h4>
+            <hr>
+            <%= form_for([@student, StudentStandard.new]) do |f| %>
+              <div>
+                <%= f.label :attained %>
+                <%= f.check_box :attained %>
+              </div>
+              <div>
+                <%= f.label :notes %>
+                <%= f.text_field :notes %>
+              </div>
+              <div>
+                <%= f.label :assignments %>
+                <%= f.text_field :assignments %>
+              </div>
+              <div>
+                <%= f.submit 'Save', class: 'btn btn-default' %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
