@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1><strong><%= @student.name %></strong></h1>
+</div>
+  <%= render 'standards/form' %>
+<div class="row">
+  <h2><%= @subject.name + " Standards:" %></h2>
+</div><br />
+  <%= render 'standards/standard' %>

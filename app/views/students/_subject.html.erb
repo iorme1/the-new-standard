@@ -1,0 +1,5 @@
+<% @subjects.each do |subject| %>
+  <div class="field">
+    <h4><%= link_to "#{subject.name} Standards", subject_path(subject) %></h4>
+  </div>
+<% end %>

@@ -1,8 +1,21 @@
 @import "bootstrap-sprockets";
-@import "bootswatch/readable/variables";
+@import "bootswatch/slate/variables";
 @import "bootstrap";
-@import "bootswatch/readable/bootswatch";
+@import "bootswatch/slate/bootswatch";
 
 .page-nav {
   margin-bottom: 0;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: rgb(62, 186, 66);
+}
+
+.border {
+  border-style: ridge;
+  padding: 20px;
 }

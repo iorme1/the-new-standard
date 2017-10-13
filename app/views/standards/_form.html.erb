@@ -1,0 +1,29 @@
+<%= form_for [@subject, @standard] do |f| %>
+<div class="jumbotron">
+  <div class="form-group">
+    <%= f.label :description, "Standard Description",  class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_area :description, class: 'form-control' %><br />
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :notes, "Teacher Notes", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_area :notes,  class: 'form-control' %><br />
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :assignments, "Related Assignments" , class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_area :assignments, class: 'form-control' %><br />
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :completed, "Standard Complete", class: 'col-md-2'%>
+    <%= f.check_box :completed %>
+  </div><br />
+  <div class="form-group">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  </div>
+</div>
+<% end %> <br />

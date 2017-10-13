@@ -1,0 +1,26 @@
+<% @standards.each do |standard| %>
+  <div class="border">
+    <% if standard.completed %>
+      <div class="field">
+         <strong class="green"> Standard Complete </strong>
+      </div><br />
+    <% else %>
+    <div class="field">
+       <strong class="red"> Standard Not Complete </strong>
+    </div><br />
+    <% end %>
+    <div class="field">
+      <strong>Standard Description:</strong><br /><%= standard.description %>
+    </div><br />
+    <div class="field">
+      <strong>Teacher Notes:</strong><br /><%= standard.notes %>
+    </div><br />
+    <div class="field">
+      <strong>Related Assignments:</strong><br /><%= standard.assignments %>
+    </div><br />
+    <div class="field">
+       <%= link_to "Edit", edit_subject_standard_path(@subject, standard), class: 'btn btn-primary' %>
+       <%= link_to "Delete", subject_standard_path(@subject, standard), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete this standard?"} %>
+    </div>
+  </div><br />
+<% end %>

@@ -6,6 +6,14 @@ Rails.application.routes.draw do
     resources :students, only: [:create, :destroy]
   end
 
+  resources :students, only: [:show] do
+    resources :subjects, only: [:create, :destroy]
+  end
+
+  resources :subjects, only: [:show] do
+    resources :standards
+  end
+
   get 'welcome/show'
   root 'welcome#show'
 end
