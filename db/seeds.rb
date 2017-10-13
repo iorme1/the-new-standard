@@ -1,9 +1,9 @@
 
 5.times do
-  User.create!(
+  User.create(
     email: Faker::Internet.email,
     name: Faker::Lorem.sentence,
-    password: 123123,
+    password: 'password',
     confirmed_at: Time.now
   )
 end
@@ -11,7 +11,7 @@ end
 users = User.all
 
 50.times do
-  Student.create!(
+  Student.create(
     name: Faker::Lorem.sentence,
     user: users.sample,
   )

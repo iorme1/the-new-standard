@@ -9,9 +9,6 @@
 <body>
 
   <nav class="navbar navbar-default page-nav">
-    <div class="flash">
-      <%= render 'layouts/messages' %>
-    </div>
      <div class="navbar-header">
        <% if user_signed_in? %>
          <%= link_to "#{current_user.name}'s Students", user_path(current_user), class: "navbar-brand"  %>
@@ -31,6 +28,9 @@
      </div>
   </nav>
 
+  <div class="flash">
+    <%= render 'layouts/messages' %>
+  </div>
 
   <div class="container">
     <%= yield %>
