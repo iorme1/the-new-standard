@@ -1,4 +1,3 @@
-
 5.times do
   User.create(
     email: Faker::Internet.email,
@@ -19,8 +18,8 @@ users = User.all
 
 50.times do
   Student.create(
-    name: Faker::Lorem.sentence,
-    user: users.sample,
+    name: Faker::Artist.name,
+    user: users.sample
   )
 end
 

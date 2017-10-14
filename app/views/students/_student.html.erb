@@ -1,6 +1,6 @@
 <tr>
   <td><strong><%= student.name %></strong></td>
   <td><%= "Subjects" %></td>
-  <td><%= link_to 'View record', user_student_path(current_user, student) %></td>
-  <td><strong><%= link_to "Remove Student", user_student_path(current_user, student), method: :delete, class: "btn btn-danger btn-sm" %></strong></td>
+  <td><%= link_to 'View record', student %></td>
+  <td><strong><%= link_to "Remove Student", student, method: :delete, class: "btn btn-danger btn-sm" %></strong></td>
 </tr>
