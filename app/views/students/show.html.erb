@@ -1,35 +1,38 @@
-<h1>Standards report for <%= @student.name %></h1>
-
-<% @standards.each do |standard| %>
+<div class="jumbotron">
+  <h2>Standards Report For <%= @student.name %></h2>
+  <p>Choose A Subject:</p>
   <div>
-    <button onclick="displayHandler(this.innerHTML)" class="btn btn-success"><%= standard[0] %></button>
+    <% @standards.each do |standard| %>
+      <h3 onclick="displayHandler(this.innerHTML)" class="btn btn-toolbar btn-warning"><%= standard[0] %></h3>
+    <% end %>
   </div>
-<% end %>
+</div>
 
- <table class='table'>
+ <table class='table table-hover'>
    <tbody>
      <% @standards.each do |subject, standards| %>
        <% standards.each do |standard| %>
 
          <tr class="<%= subject %> hide standards" >
            <td>
-             <h3><%= standard.subject %></h3>
-             <h3><%= standard.description %></h3>
+             <h2 class="info page-header"> <%= standard.subject %></h2>
+             <h4> <%= standard.description %></h4><br />
 
                <% if @student.standards.include?(standard) %>
                  <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
-                 <div class="field">
-                   <%= student_standard.notes %>
-                 </div>
-                  <div class="field">
-                   <%= student_standard.assignments %>
-                  </div>
-                  <div class="field">
-                   <%= student_standard.completed %>
-                  </div>
-                   <div class="field">
-                   <%= link_to "Edit", edit_student_student_standard_path(@student, student_standard), class: "btn btn-primary" %>
-                 </div>
+                   <div class="<%= "#{'red' if student_standard.completed == false} #{'green' if student_standard.completed} " %>">
+                     <%= "Standard Completed!" if student_standard.completed %>
+                     <%= "Standard Not Complete" if student_standard.completed == false %>
+                   </div><br />
+                   <div>
+                     <p class="text-warning"> NOTES:</p> <%= student_standard.notes %>
+                   </div><br />
+                   <div>
+                     <p class="text-warning">RELATED ASSIGNMENTS:</p> <%= simple_format h(student_standard.assignments) %>
+                   </div><br />
+                   <div>
+                     <%= link_to "Edit", edit_student_student_standard_path(@student, student_standard), class: "btn btn-danger" %>
+                   </div>
                 <% end %>
               <% else %>
                 <div class="form-wrapper">
@@ -38,7 +41,7 @@
                   <%= f.check_box :completed %>
                   <%= f.text_area :notes %>
                   <%= f.text_area :assignments %>
-                  <%= f.submit 'Save', class: 'btn btn-default' %>
+                  <%= f.submit 'Save', class: 'btn btn-success' %>
               </div>
               <% end %>
               <% end %>
