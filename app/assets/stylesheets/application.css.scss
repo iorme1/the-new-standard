@@ -1,8 +1,20 @@
 @import "bootstrap-sprockets";
-@import "bootswatch/readable/variables";
+@import "bootswatch/slate/variables";
 @import "bootstrap";
-@import "bootswatch/readable/bootswatch";
+@import "bootswatch/slate/bootswatch";
 
 .page-nav {
-  margin-bottom: 0;
-}
+   margin-bottom: 0;
+ }
+
+ .form-wrapper {
+   width: 50%;
+ }
+
+ #student_standard_notes, #student_standard_assignments {
+   height: 8rem;
+ }
+
+ .badge-completed {
+   padding: 0.6rem;
+ }

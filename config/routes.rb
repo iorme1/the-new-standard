@@ -2,10 +2,15 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :users, only: [:show] do
-    resources :students, only: [:create, :destroy]
+  resources :users, only: [:show]
+
+  resources :students do
+    resources :student_standards
   end
 
-  get 'welcome/show'
+  authenticated :user do
+    root 'students#index', as: :authenticated_root
+  end 
+
   root 'welcome#show'
 end

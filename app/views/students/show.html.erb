@@ -1,0 +1,50 @@
+<h1>Standards report for <%= @student.name %></h1>
+
+<% @standards.each do |standard| %>
+  <div>
+    <button onclick="displayHandler(this.innerHTML)" class="btn btn-success"><%= standard[0] %></button>
+  </div>
+<% end %>
+
+ <table class='table'>
+   <tbody>
+     <% @standards.each do |subject, standards| %>
+       <% standards.each do |standard| %>
+
+         <tr class="<%= subject %> hide standards" >
+           <td>
+             <h3><%= standard.subject %></h3>
+             <h3><%= standard.description %></h3>
+
+               <% if @student.standards.include?(standard) %>
+                 <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
+                 <div class="field">
+                   <%= student_standard.notes %>
+                 </div>
+                  <div class="field">
+                   <%= student_standard.assignments %>
+                  </div>
+                  <div class="field">
+                   <%= student_standard.completed %>
+                  </div>
+                   <div class="field">
+                   <%= link_to "Edit", edit_student_student_standard_path(@student, student_standard), class: "btn btn-primary" %>
+                 </div>
+                <% end %>
+              <% else %>
+                <div class="form-wrapper">
+                  <%= bootstrap_form_for [@student, StudentStandard.new] do |f| %>
+                  <%= f.hidden_field :standard_id, value: standard.id %>
+                  <%= f.check_box :completed %>
+                  <%= f.text_area :notes %>
+                  <%= f.text_area :assignments %>
+                  <%= f.submit 'Save', class: 'btn btn-default' %>
+              </div>
+              <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>

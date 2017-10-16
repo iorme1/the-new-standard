@@ -15,3 +15,12 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+function displayHandler(button) {
+  $('.standards').each(function(i, obj){
+    if ( $(this).hasClass("hide") == false ) {
+      $(this).addClass("hide")
+    }
+  });
+  button == "Speaking and Listening" ? $('.Listening').toggleClass('hide') :  $(`.${button}`).toggleClass('hide')
+}
