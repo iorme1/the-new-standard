@@ -24,3 +24,10 @@ function displayHandler(button) {
   });
   button == "Speaking and Listening" ? $('.Listening').toggleClass('hide') :  $(`.${button}`).toggleClass('hide')
 }
+
+
+$(function() {
+   $('.flash').delay(500).fadeIn('normal', function() {
+      $(this).delay(1500).fadeOut();
+   });
+});

@@ -1,6 +1,6 @@
 <div class="jumbotron">
-  <h2>Standards Report For <%= @student.name %></h2>
-  <p>Choose A Subject:</p>
+  <h2>Standards report for <%= @student.name %></h2>
+  <p>Filter by Subject:</p>
   <div>
     <% @standards.each do |standard| %>
       <h3 onclick="displayHandler(this.innerHTML)" class="btn btn-toolbar btn-warning"><%= standard[0] %></h3>
@@ -8,46 +8,43 @@
   </div>
 </div>
 
+
  <table class='table table-hover'>
    <tbody>
      <% @standards.each do |subject, standards| %>
        <% standards.each do |standard| %>
-
-         <tr class="<%= subject %> hide standards" >
+         <tr class="<%= subject %> standards" >
            <td>
              <h2 class="info page-header"> <%= standard.subject %></h2>
-             <h4> <%= standard.description %></h4><br />
+             <h4><%= standard.description %></h4><br />
 
-               <% if @student.standards.include?(standard) %>
-                 <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
-                   <div class="<%= "#{'red' if student_standard.completed == false} #{'green' if student_standard.completed} " %>">
-                     <%= "Standard Completed!" if student_standard.completed %>
-                     <%= "Standard Not Complete" if student_standard.completed == false %>
-                   </div><br />
-                   <div>
-                     <p class="text-warning"> NOTES:</p> <%= student_standard.notes %>
-                   </div><br />
-                   <div>
-                     <p class="text-warning">RELATED ASSIGNMENTS:</p> <%= simple_format h(student_standard.assignments) %>
-                   </div><br />
-                   <div>
-                     <%= link_to "Edit", edit_student_student_standard_path(@student, student_standard), class: "btn btn-danger" %>
-                   </div>
+             <div class="flash_<%= standard.id %>"></div>
+
+
+             <% if @student.standards.include?(standard) %>
+
+               <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
+                   <a name="<%= student_standard.id %>"></a>
+                  <%= render student_standard %>
                 <% end %>
+
               <% else %>
-                <div class="form-wrapper">
-                  <%= bootstrap_form_for [@student, StudentStandard.new] do |f| %>
-                  <%= f.hidden_field :standard_id, value: standard.id %>
-                  <%= f.check_box :completed %>
-                  <%= f.text_area :notes %>
-                  <%= f.text_area :assignments %>
-                  <%= f.submit 'Save', class: 'btn btn-success' %>
-              </div>
+
+                 <div class="form-wrapper" id= "standard_<%= standard.id %>">
+                    <%= bootstrap_form_for [@student, StudentStandard.new], remote: true do |f| %>
+                    <%= f.hidden_field :standard_id, value: standard.id %>
+                    <%= f.check_box :completed %>
+                    <%= f.text_area :notes %>
+                    <%= f.text_area :assignments %>
+                    <%= f.submit 'Save', class: 'btn btn-success' %>
+                 </div>
+                 <% end %>
+
               <% end %>
-              <% end %>
+
             </td>
           </tr>
-          <% end %>
         <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>

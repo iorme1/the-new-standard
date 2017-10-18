@@ -10,7 +10,8 @@ class StudentStandardsController < ApplicationController
     @student_standard = @student.student_standards.find(params[:id])
 
     if @student_standard.update(student_standard_params)
-      redirect_to @student, notice: "Standard has been updated"
+      flash[:notice] =  "Standard has been updated"
+      redirect_to student_path(@student, anchor: @student_standard)
     else
       flash[:error] = "Standard was not updated. Please try again."
       render 'edit'
@@ -19,11 +20,9 @@ class StudentStandardsController < ApplicationController
 
   def create
     @student =  Student.find(params[:student_id])
-    standard = @student.student_standards.new(student_standard_params)
-
-    if standard.save
-      redirect_to @student, notice: 'Standard saved'
-    end
+    @student_standard = @student.student_standards.new(student_standard_params)
+    @standard_id = params[:student_standard][:standard_id]
+    @student_standard.save
   end
 
   private
