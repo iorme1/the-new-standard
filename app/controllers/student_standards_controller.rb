@@ -22,13 +22,6 @@ class StudentStandardsController < ApplicationController
         format.html { render :edit }
       end
     end
-    #if @student_standard.update(student_standard_params)
-      #flash[:notice] =  "Standard has been updated"
-      #redirect_to student_path(@student, anchor: @student_standard)
-    #else
-      #flash[:error] = "Standard was not updated. Please try again."
-      #render 'edit'
-    #end
   end
 
   def create

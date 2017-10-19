@@ -1,6 +1,1 @@
 $('#standard_<%= @standard_id %>').html('<%= escape_javascript(render @student_standard) %>');
-$('.flash_<%= @standard_id %>')
-  .html('<div class="alert alert-success" data-spy="affix" data-offset-top="205">Standard saved</div>')
-  .fadeIn('normal', function() {
-    $(this).delay(1500).fadeOut();
-  });

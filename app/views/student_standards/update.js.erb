@@ -1,3 +1,1 @@
-$('#standard_<%= @standard_id %>').hide();
-$('#student_standard_<%= @student_standard.id %>').load("<%= j render partial: 'student_standards/student_standard', locals: {student_standard: @student_standard } %>");
-$('#student_standard_<%= @student_standard.id %>').show();
+$('#student_standard_<%= @student_standard.id %>').html('<%= escape_javascript(render @student_standard) %>');

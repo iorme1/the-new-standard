@@ -1,0 +1,107 @@
+diff --git a/Gemfile b/Gemfile
+index cbb3c37..cec3415 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -21,7 +21,6 @@ gem 'uglifier', '>= 1.3.0'
+ gem 'coffee-rails', '~> 4.1.0'
+ gem 'jquery-rails'
+ gem 'turbolinks'
+-gem 'bootstrap'
+ gem 'figaro'
+ 
+ group :development, :test do
+diff --git a/Gemfile.lock b/Gemfile.lock
+index c79475e..b37894a 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -41,10 +41,6 @@ GEM
+     bcrypt (3.1.11)
+     binding_of_caller (0.7.2)
+       debug_inspector (>= 0.0.1)
+-    bootstrap (4.0.0.beta)
+-      autoprefixer-rails (>= 6.0.3)
+-      popper_js (~> 1.11.1)
+-      sass (>= 3.4.19)
+     bootstrap-sass (3.3.7)
+       autoprefixer-rails (>= 5.2.1)
+       sass (>= 3.3.4)
+@@ -105,7 +101,6 @@ GEM
+       mini_portile2 (~> 2.3.0)
+     orm_adapter (0.5.0)
+     pg (0.21.0)
+-    popper_js (1.11.1)
+     pry (0.11.1)
+       coderay (~> 1.1.0)
+       method_source (~> 0.9.0)
+@@ -216,7 +211,6 @@ PLATFORMS
+   ruby
+ 
+ DEPENDENCIES
+-  bootstrap
+   bootstrap-sass (~> 3.3.6)
+   bootstrap_form
+   bootswatch-rails
+@@ -241,4 +235,4 @@ DEPENDENCIES
+   web-console (~> 2.0)
+ 
+ BUNDLED WITH
+-   1.16.0.pre.2
++   1.16.0.pre.3
+diff --git a/app/controllers/student_standards_controller.rb b/app/controllers/student_standards_controller.rb
+index 3805328..d02c155 100644
+--- a/app/controllers/student_standards_controller.rb
++++ b/app/controllers/student_standards_controller.rb
+@@ -22,13 +22,6 @@ class StudentStandardsController < ApplicationController
+         format.html { render :edit }
+       end
+     end
+-    #if @student_standard.update(student_standard_params)
+-      #flash[:notice] =  "Standard has been updated"
+-      #redirect_to student_path(@student, anchor: @student_standard)
+-    #else
+-      #flash[:error] = "Standard was not updated. Please try again."
+-      #render 'edit'
+-    #end
+   end
+ 
+   def create
+diff --git a/app/views/student_standards/create.js.erb b/app/views/student_standards/create.js.erb
+index 1dc814d..33aaf8f 100644
+--- a/app/views/student_standards/create.js.erb
++++ b/app/views/student_standards/create.js.erb
+@@ -1,6 +1 @@
+ $('#standard_<%= @standard_id %>').html('<%= escape_javascript(render @student_standard) %>');
+-$('.flash_<%= @standard_id %>')
+-  .html('<div class="alert alert-success" data-spy="affix" data-offset-top="205">Standard saved</div>')
+-  .fadeIn('normal', function() {
+-    $(this).delay(1500).fadeOut();
+-  });
+diff --git a/app/views/student_standards/edit.js.erb b/app/views/student_standards/edit.js.erb
+index c003f3c..08ba793 100644
+--- a/app/views/student_standards/edit.js.erb
++++ b/app/views/student_standards/edit.js.erb
+@@ -1,2 +1 @@
+-$('#student_standard_<%= @student_standard.id %>').hide()
+-$('#student_standard_<%= @student_standard.id %>').after("<%= j render 'student_standards/form' %>")
++$('#student_standard_<%= @student_standard.id %>').html("<%= j render 'student_standards/form' %>")
+diff --git a/app/views/student_standards/update.js.erb b/app/views/student_standards/update.js.erb
+index 88fc645..6fefe1c 100644
+--- a/app/views/student_standards/update.js.erb
++++ b/app/views/student_standards/update.js.erb
+@@ -1,3 +1 @@
+-$('#standard_<%= @standard_id %>').hide();
+-$('#student_standard_<%= @student_standard.id %>').load("<%= j render partial: 'student_standards/student_standard', locals: {student_standard: @student_standard } %>");
+-$('#student_standard_<%= @student_standard.id %>').show();
++$('#student_standard_<%= @student_standard.id %>').html('<%= escape_javascript(render @student_standard) %>');
+diff --git a/app/views/students/show.html.erb b/app/views/students/show.html.erb
+index 35a4fea..1ca7da2 100644
+--- a/app/views/students/show.html.erb
++++ b/app/views/students/show.html.erb
+@@ -16,7 +16,6 @@
+            <td>
+              <h2 class="info page-header"> <%= standard.subject %></h2>
+              <h4><%= standard.description %></h4><br />
+-             <div class="flash_<%= standard.id %>"></div>
+ 
+              <% if @student.standards.include?(standard) %>
+ 
