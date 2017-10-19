@@ -2,10 +2,10 @@
   <div class="<%= "#{'red' if student_standard.completed == false} #{'green' if student_standard.completed} " %>">
     <%= "Standard Completed!" if student_standard.completed %>
     <%= "Standard Not Complete" if student_standard.completed == false %>
-   </div><br />
+  </div><br />
    <div>
      <p class="text-warning"> NOTES:</p>  <%= student_standard.notes %>
-   </div><br />
+   </div><br /><br />
    <div>
      <p class="text-warning">RELATED ASSIGNMENTS:</p> <%= simple_format h(student_standard.assignments) %>
    </div><br />

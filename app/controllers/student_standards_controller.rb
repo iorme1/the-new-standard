@@ -1,9 +1,7 @@
 class StudentStandardsController < ApplicationController
+  before_action :set_vars, only: [:edit, :update]
 
   def edit
-    @student = Student.find(params[:student_id])
-    @student_standard = @student.student_standards.find(params[:id])
-
     respond_to do |format|
       format.html {redirect_to @student_standard}
       format.js
@@ -11,9 +9,6 @@ class StudentStandardsController < ApplicationController
   end
 
   def update
-    @student = Student.find(params[:student_id])  #changed this from student_id to id
-    @student_standard = @student.student_standards.find(params[:id])
-
     respond_to do |format|
       if @student_standard.update(student_standard_params)
         format.html { redirect_to @student_standard }
@@ -22,13 +17,6 @@ class StudentStandardsController < ApplicationController
         format.html { render :edit }
       end
     end
-    #if @student_standard.update(student_standard_params)
-      #flash[:notice] =  "Standard has been updated"
-      #redirect_to student_path(@student, anchor: @student_standard)
-    #else
-      #flash[:error] = "Standard was not updated. Please try again."
-      #render 'edit'
-    #end
   end
 
   def create
@@ -43,4 +31,10 @@ class StudentStandardsController < ApplicationController
   def student_standard_params
     params.require(:student_standard).permit(:notes, :assignments, :completed, :standard_id)
   end
+
+  def set_vars
+    @student = Student.find(params[:student_id])
+    @student_standard = @student.student_standards.find(params[:id])
+  end
+
 end

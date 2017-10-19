@@ -1,4 +1,5 @@
 <div class="jumbotron">
+  <a name="back-to-top"></a>
   <h2>Standards report for <%= @student.name %></h2>
   <p>Filter by Subject:</p>
   <div>
@@ -8,20 +9,20 @@
   </div>
 </div>
 
+
  <table class='table table-hover'>
    <tbody>
      <% @standards.each do |subject, standards| %>
        <% standards.each do |standard| %>
          <tr class="<%= subject %> standards" >
            <td>
+             <a class="top" href="#back-top-top">Back to top</a>
              <h2 class="info page-header"> <%= standard.subject %></h2>
              <h4><%= standard.description %></h4><br />
-             <div class="flash_<%= standard.id %>"></div>
 
              <% if @student.standards.include?(standard) %>
 
                <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
-                 <a name="<%= student_standard.id %>"></a>
                  <%= render student_standard %>
                <% end %>
 
@@ -36,7 +37,6 @@
                     <%= f.submit 'Save', class: 'btn btn-success' %>
                  </div>
                  <% end %>
-
             <% end %>
 
             </td>
@@ -45,3 +45,6 @@
       <% end %>
     </tbody>
   </table>
+  <div class="copywright navbar-bottom">
+    © Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.”
+  </div>
