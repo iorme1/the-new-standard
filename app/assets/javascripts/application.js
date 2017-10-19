@@ -22,7 +22,7 @@ function displayHandler(button) {
       $(this).addClass("hide")
     }
   });
-  button == "Speaking and Listening" ? $('.Listening').toggleClass('hide') :  $(`.${button}`).toggleClass('hide')
+   button == "Speaking and Listening" ? $('.Listening').toggleClass('hide') : $('.' + button).toggleClass('hide');
 }
 
 
