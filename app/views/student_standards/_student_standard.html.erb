@@ -1,13 +1,15 @@
-<div class="<%= "#{'red' if student_standard.completed == false} #{'green' if student_standard.completed} " %>" id="student_standard_<%= student_standard.id %>">
-  <%= "Standard Completed!" if student_standard.completed %>
-  <%= "Standard Not Complete" if student_standard.completed == false %>
- </div><br />
- <div>
-   <p class="text-warning"> NOTES:</p>  <%= student_standard.notes %>
- </div><br />
- <div>
-   <p class="text-warning">RELATED ASSIGNMENTS:</p> <%= simple_format h(student_standard.assignments) %>
- </div><br />
- <div>
-   <%= link_to "Edit", edit_student_student_standard_path(@student, student_standard), class: "btn btn-danger" %>
+<div id="student_standard_<%= student_standard.id %>">
+  <div class="<%= "#{'red' if student_standard.completed == false} #{'green' if student_standard.completed} " %>">
+    <%= "Standard Completed!" if student_standard.completed %>
+    <%= "Standard Not Complete" if student_standard.completed == false %>
+   </div><br />
+   <div>
+     <p class="text-warning"> NOTES:</p>  <%= student_standard.notes %>
+   </div><br />
+   <div>
+     <p class="text-warning">RELATED ASSIGNMENTS:</p> <%= simple_format h(student_standard.assignments) %>
+   </div><br />
+   <div>
+     <%= link_to "Edit", edit_student_student_standard_path(@student, student_standard), remote: true, class: "btn btn-danger" %>
+   </div>
  </div>

@@ -1,0 +1,8 @@
+<div class="form-wrapper" id= "standard_<%= @standard_id %>">
+  <%= bootstrap_form_for [@student, @student_standard], remote: true do |f| %>
+    <%= f.check_box :completed %>
+    <%= f.text_area :notes %>
+    <%= f.text_area :assignments %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+</div>
+<% end %>

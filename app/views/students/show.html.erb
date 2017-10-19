@@ -8,7 +8,6 @@
   </div>
 </div>
 
-
  <table class='table table-hover'>
    <tbody>
      <% @standards.each do |subject, standards| %>
@@ -17,18 +16,16 @@
            <td>
              <h2 class="info page-header"> <%= standard.subject %></h2>
              <h4><%= standard.description %></h4><br />
-
              <div class="flash_<%= standard.id %>"></div>
-
 
              <% if @student.standards.include?(standard) %>
 
                <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
-                   <a name="<%= student_standard.id %>"></a>
-                  <%= render student_standard %>
-                <% end %>
+                 <a name="<%= student_standard.id %>"></a>
+                 <%= render student_standard %>
+               <% end %>
 
-              <% else %>
+            <% else %>
 
                  <div class="form-wrapper" id= "standard_<%= standard.id %>">
                     <%= bootstrap_form_for [@student, StudentStandard.new], remote: true do |f| %>
@@ -40,7 +37,7 @@
                  </div>
                  <% end %>
 
-              <% end %>
+            <% end %>
 
             </td>
           </tr>
