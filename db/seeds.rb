@@ -1,10 +1,3 @@
-  User.create!(
-    email: "isorme1@gmail.com",
-    name: "Isaac Orme",
-    password: 123123,
-    confirmed_at: Time.now
-  )
-
 READING_STANDARDS = [
 
   ["Reading", "RL.2.1 Ask and answer such questions as who, what, where, when, why, and how to demonstrate understanding of key details in a text."],
@@ -141,6 +134,4 @@ MATHEMATICS = [
 MATHEMATICS.each { |s| Standard.create!(subject: s[0], description: s[1]) }
 
   puts "Seeds finished"
-  puts "#{User.count} users created"
-  puts "#{Student.count} students created"
   puts "#{Standard.count} standards created"

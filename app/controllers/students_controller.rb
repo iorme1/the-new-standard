@@ -13,15 +13,11 @@ class StudentsController < ApplicationController
   def create
     @student = current_user.students.new(student_params)
     @student.save
-
-    redirect_to root_path, notice: 'Student added'
   end
 
   def destroy
     @student = current_user.students.find(params[:id])
     @student.destroy
-
-    redirect_to root_path, notice: 'Student removed'
   end
 
   private
