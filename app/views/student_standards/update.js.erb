@@ -1,1 +1,7 @@
 $('#student_standard_<%= @student_standard.id %>').html('<%= escape_javascript(render @student_standard) %>');
+swal({
+  text: 'Standard updated',
+  timer: 1500,
+  type: 'success',
+  showConfirmButton: false
+});

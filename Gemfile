@@ -22,6 +22,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'figaro'
+gem 'sweet-alert'
 
 group :development, :test do
   gem 'byebug'
