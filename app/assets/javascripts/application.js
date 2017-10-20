@@ -31,3 +31,7 @@ $(function() {
       $(this).delay(1500).fadeOut();
    });
 });
+
+function backToTop(){
+  window.scrollTo(0,0);
+}

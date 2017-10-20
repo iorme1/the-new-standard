@@ -1,10 +1,5 @@
 class StudentsController < ApplicationController
 
-  def index
-    @students = current_user.students
-    @student = Student.new
-  end
-
   def show
     @student = Student.find(params[:id])
     @standards = Standard.all.group_by(&:subject)
@@ -13,11 +8,21 @@ class StudentsController < ApplicationController
   def create
     @student = current_user.students.new(student_params)
     @student.save
+
+    respond_to do |format|
+      format.html { redirect_to @student}
+      format.js
+    end
   end
 
   def destroy
     @student = current_user.students.find(params[:id])
     @student.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @student }
+      format.js
+    end
   end
 
   private

@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'students#index', as: :authenticated_root
-  end 
+    root 'welcome#show', as: :authenticated_root
+  end
 
   root 'welcome#show'
 end
