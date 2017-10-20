@@ -13,23 +13,22 @@
     <div class="flash">
       <%= render 'layouts/messages' %>
     </div>
-     <div class="navbar-header">
-       <% if user_signed_in? %>
-         <%= link_to "#{current_user.name}'s Students", user_path(current_user), class: "navbar-brand"  %>
-       <% end %>
-     </div>
+    <div class="navbar-header navbar-brand">
+      <% if user_signed_in? %>
+        <%= "#{current_user.name}'s Standard App" %>
+      <% end %>
+    </div>
      <div class="container">
        <ul class="nav navbar-nav pull-right">
-         <li> <%= link_to "Sign Up", new_user_registration_path %></li>
          <% if user_signed_in? %>
-           <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete  %>
-           <strong><%= current_user.name %> </strong>
-        </li>
-        <li> <%= link_to "Edit Account", edit_user_registration_path %></li>
-        <li> <%= link_to "Home", root_path %></li>
+           <li> <%= link_to "#{current_user.name}'s Class List", user_path(current_user) %> </li>
+           <li> <%= link_to "Home", root_path %></li>
+           <li> <%= link_to "Edit Account", edit_user_registration_path %></li>        
+           <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
         <% else %>
           <li> <%= link_to "Sign In", new_user_session_path  %> </li>
         <% end %>
+          <li> <%= link_to "Sign Up", new_user_registration_path %></li>
        </ul>
      </div>
   </nav>
