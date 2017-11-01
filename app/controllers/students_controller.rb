@@ -8,21 +8,11 @@ class StudentsController < ApplicationController
   def create
     @student = current_user.students.new(student_params)
     @student.save
-
-    respond_to do |format|
-      format.html { redirect_to @student}
-      format.js
-    end
   end
 
   def destroy
     @student = current_user.students.find(params[:id])
     @student.destroy
-
-    respond_to do |format|
-      format.html { redirect_to @student }
-      format.js
-    end
   end
 
   private
