@@ -2,11 +2,21 @@ class StudentStandardsController < ApplicationController
   before_action :set_vars, only: [:edit, :update]
 
   def edit
-
+    respond_to do |format|
+      format.html { redirect_to @student_standard }
+      format.js
+    end
   end
 
   def update
-    
+    respond_to do |format|
+      if @student_standard.update(student_standard_params)
+        format.html { redirect_to @student_standard }
+        format.js
+      else
+        format.html { render :edit}
+      end
+    end
   end
 
   def create
