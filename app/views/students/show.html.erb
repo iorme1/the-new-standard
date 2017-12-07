@@ -9,6 +9,15 @@
 </div>
 
 
+  <nav class="navbar col-md-4">
+    <h4 id="take-me" class="text-info">Unfiltered Standards</h4> <span class="text-info" style="margin-right: 12px;">Page Navigation:</span>
+    <p class="btn btn-sm btn-info" onclick="takeMeTo(this.innerHTML)">1/3</p>
+    <p class="btn btn-sm btn-info" onclick="takeMeTo(this.innerHTML)">1/2</p>
+    <p class="btn btn-sm btn-info" onclick="takeMeTo(this.innerHTML)">3/4</p>
+    <p class="btn btn-sm btn-info" onclick="takeMeTo(this.innerHTML)">bottom</p>
+  </nav>
+
+
  <table class='table table-hover'>
    <tbody>
      <% @standards.each do |subject, standards| %>

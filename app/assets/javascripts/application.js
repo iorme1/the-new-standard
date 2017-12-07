@@ -23,6 +23,8 @@ function displayHandler(button) {
     }
   });
    button == "Speaking and Listening" ? $('.Listening').toggleClass('hide') : $('.' + button).toggleClass('hide');
+   document.getElementById('take-me').innerHTML = button
+   console.log(this.innerHTML)
 }
 
 
@@ -35,3 +37,70 @@ $(function() {
 function backToTop(){
   window.scrollTo(0,0);
 }
+
+function takeMeTo(here) {
+  var subject = document.getElementById('take-me').innerHTML;
+
+  switch(subject) {
+    case "Reading":
+      if (here === "1/3") {
+        window.scrollTo(0,4500);
+        break;
+      }
+      else if (here === "1/2") {
+        window.scrollTo(0,6750)
+        break;
+      }
+      else if (here === "3/4") {
+        window.scrollTo(0,10125)
+        break;
+      }
+      else if (here === "bottom") {
+      window.scrollTo(0,13500)
+        break;
+      }
+      case "Language":
+        if (here === "1/3") {
+          window.scrollTo(0,3800);
+          break;
+        }
+        else if (here === "1/2") {
+          window.scrollTo(0,5700)
+          break;
+        }
+        else if (here === "3/4") {
+          window.scrollTo(0,8550)
+          break;
+        }
+        else if (here === "bottom") {
+        window.scrollTo(0,11700)
+          break;
+        }
+        case "Mathematics":
+          if (here === "1/3") {
+            window.scrollTo(0,4150);
+            break;
+          }
+          else if (here === "1/2") {
+            window.scrollTo(0,6100)
+            break;
+          }
+          else if (here === "3/4") {
+            window.scrollTo(0,9000)
+            break;
+          }
+          else if (here === "bottom"){
+          window.scrollTo(0,13500)
+            break;
+          }
+
+
+  }
+}
+
+
+
+function logCoords(e) {
+
+}
+window.onclick = logCoords

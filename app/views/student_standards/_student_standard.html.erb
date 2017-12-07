@@ -4,10 +4,10 @@
     <%= "Standard Not Complete" if student_standard.completed == false %>
   </div><br />
    <div>
-     <p class="text-warning"> NOTES:</p>  <%= simple_format h(student_standard.notes) %>
-   </div><br /><br />
-   <div>
      <p class="text-warning">RELATED ASSIGNMENTS:</p> <%= simple_format h(student_standard.assignments) %>
+   </div><br />
+   <div>
+     <p class="text-warning"> NOTES:</p>  <%= simple_format h(student_standard.notes) %>
    </div><br />
    <div>
      <%= link_to "Edit", edit_student_student_standard_path(@student, student_standard), remote: true, class: "btn btn-danger" %>
