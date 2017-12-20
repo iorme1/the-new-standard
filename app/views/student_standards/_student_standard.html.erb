@@ -1,4 +1,4 @@
-<div id="student_standard_<%= student_standard.id %>">
+<div id="student_standard_<%= student_standard.id %>" class="notes-section">
   <div class="<%= "#{'red' if student_standard.completed == false} #{'green' if student_standard.completed} " %>">
     <%= "Standard Completed!" if student_standard.completed %>
     <%= "Standard Not Complete" if student_standard.completed == false %>
