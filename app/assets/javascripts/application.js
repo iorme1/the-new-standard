@@ -19,12 +19,11 @@
 function displayHandler(button) {
   $('.standards').each(function(i, obj){
     if ( $(this).hasClass("hide") == false ) {
-      $(this).addClass("hide")
+      $(this).addClass("hide");
     }
   });
    button == "Speaking and Listening" ? $('.Listening').toggleClass('hide') : $('.' + button).toggleClass('hide');
-   document.getElementById('take-me').innerHTML = button
-   console.log(this.innerHTML)
+   document.getElementById('take-me').innerHTML = button;
 }
 
 
@@ -94,13 +93,5 @@ function takeMeTo(here) {
             break;
           }
 
-
   }
 }
-
-
-
-function logCoords(e) {
-
-}
-window.onclick = logCoords

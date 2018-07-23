@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>TheNewStandard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.all.min.js' %>
@@ -23,7 +24,7 @@
          <% if user_signed_in? %>
            <li> <%= link_to "#{current_user.name}'s Class List", user_path(current_user) %> </li>
            <li> <%= link_to "Home", root_path %></li>
-           <li> <%= link_to "Edit Account", edit_user_registration_path %></li>        
+           <li> <%= link_to "Edit Account", edit_user_registration_path %></li>
            <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
         <% else %>
           <li> <%= link_to "Sign In", new_user_session_path  %> </li>

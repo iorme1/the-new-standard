@@ -1,14 +1,18 @@
-<div class="row">
-  <div class="page-header">
-    <h3><strong><%= "#{current_user.name}'s Current Student List:" %></strong></h3>
+<div class="container">
+  <div class="row">
+    <div class="page-header">
+      <h3><strong><%= "#{current_user.name}'s Current Student List:" %></strong></h3>
+    </div>
+    <div class="col-md-12">
+      <%= render 'form' %>
+    </div>
+    <div class="col-xs-12">
+      <table class="table students">
+        <tbody>
+           <%= render @students %>
+        </tbody>
+      </table>
+      <%= image_tag("stress.jpg" , class: "kids") %>
+    </div>
   </div>
-  <div class="col-md-8 col-sm-12">
-    <%= render 'form' %>
-  </div>
-  <table class="table students">
-    <tbody>
-       <%= render @students %>
-    </tbody>
-  </table>
-  <%= image_tag("stress.jpg" , class: "kids") %>
 </div>

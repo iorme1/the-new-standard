@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2>Standards report for <%= @student.name %></h2>
+  <h1>Standards report for <%= @student.name %></h1>
   <p>Filter by Subject:</p>
   <div>
     <% @standards.each do |standard| %>
@@ -7,7 +7,6 @@
     <% end %>
   </div>
 </div>
-
 
   <nav class="navbar col-md-4">
     <h4 id="take-me" class="text-info">Unfiltered Standards</h4> <span class="text-info" style="margin-right: 12px;">Page Navigation:</span>
@@ -17,42 +16,40 @@
     <p class="btn btn-sm btn-info" onclick="takeMeTo(this.innerHTML)">bottom</p>
   </nav>
 
-
- <table class='table table-hover'>
-   <tbody>
-     <% @standards.each do |subject, standards| %>
-       <% standards.each do |standard| %>
-         <tr class="<%= subject %> standards" >
-           <td>
-             <a class="top" onclick="backToTop()">Back to top</a>
-             <h2 class="info page-header"> <%= standard.subject %></h2>
-             <h4><%= standard.description %></h4><br />
-
-             <% if @student.standards.include?(standard) %>
-
-               <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
-                 <%= render student_standard %>
-               <% end %>
-
-            <% else %>
-
-                 <div class="form-wrapper" id= "standard_<%= standard.id %>">
-                    <%= bootstrap_form_for [@student, StudentStandard.new], remote: true do |f| %>
-                    <%= f.hidden_field :standard_id, value: standard.id %>
-                    <%= f.check_box :completed %>
-                    <%= f.text_area :notes %>
-                    <%= f.text_area :assignments %>
-                    <%= f.submit 'Save', class: 'btn btn-success' %>
-                 </div>
-                 <% end %>
-            <% end %>
-
-            </td>
-          </tr>
+   <table class='table table-hover'>
+     <tbody>
+       <% @standards.each do |subject, standards| %>
+         <% standards.each do |standard| %>
+           <div class="row">
+             <div class="col-xs-12">
+               <tr class="<%= subject %> standards" >
+                 <td>
+                   <a class="top" onclick="backToTop()">Back to top</a>
+                   <h2 class="info page-header"> <%= standard.subject %></h2>
+                   <h4><%= standard.description %></h4><br />
+                   <% if @student.standards.include?(standard) %>
+                     <% @student.student_standards.where(standard_id: standard).each do |student_standard| %>
+                       <%= render student_standard %>
+                     <% end %>
+                  <% else %>
+                       <div class="form-wrapper" id= "standard_<%= standard.id %>">
+                          <%= bootstrap_form_for [@student, StudentStandard.new], remote: true do |f| %>
+                          <%= f.hidden_field :standard_id, value: standard.id %>
+                          <%= f.check_box :completed %>
+                          <%= f.text_area :notes %>
+                          <%= f.text_area :assignments %>
+                          <%= f.submit 'Save', class: 'btn btn-success' %>
+                       </div>
+                       <% end %>
+                  <% end %>
+                  </td>
+                </tr>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   <div class="copywright navbar-bottom">
     © Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.”
   </div>
