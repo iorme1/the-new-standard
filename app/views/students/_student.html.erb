@@ -1,5 +1,5 @@
 <%= content_tag(:tr, id: "student_#{student.id}") do %>
   <td class="list-student-name"><strong><%= student.name %></strong></td>
-  <td><%= link_to "View Record", student, class: "btn btn-info" %></td>
-  <td><strong><%= link_to "Remove Student", student, method: :delete, remote: true, class: "btn btn-danger" %></strong></td>
+  <td><%= link_to "View Record", student, class: "view-rec-btn btn btn-sm btn-info" %></td>
+  <td><strong><%= link_to "Remove Student", student, method: :delete, remote: true, class: "remove-st-btn btn btn-sm btn-danger" %></strong></td>
 <% end %>
