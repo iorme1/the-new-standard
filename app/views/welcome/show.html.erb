@@ -1,10 +1,15 @@
-<%= image_tag("stress.jpg" , class: "kids") %>
 <div class="welcome-info jumbotron">
-  <h1 class="text-warning">Welcome to the New Standard</h1>
-
-  <ul>
-    <p> - An application to help teachers organize their Standards-related data</p>
-    <p> - This version only supports 2nd grade standards for the state of California</p>
-    <p> - Email me any questions or suggestions at isorme1@gmail.com </li>
-  </ul>
+  <div class="row">
+      <div class="col-md-8">
+          <h1 class="text-warning">Welcome to The New Standard</h1>
+          <div class="welcome-description">
+              <p> An application to help teachers organize their Standards-related data.
+               This version only supports 2nd grade standards for the state of California.
+               Email me any questions or suggestions at isorme1@gmail.com </p>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <%= image_tag("stress.jpg" , class: "kids") %>
+      </div>
+    </div>
 </div>
