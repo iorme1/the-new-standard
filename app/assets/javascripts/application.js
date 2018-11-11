@@ -16,15 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-
-Scout.configure({
-    clientId: "b3281823-7fbd-468c-aa36-5f755a0d3ca5"
-  }).then(() => {
-    Scout.players.search("Ninja", "epic", null, "fortnite").then(results => {
-      console.log(results);
-    });
-});
-
 function displayHandler(button) {
   $('.standards').each(function(i, obj){
     if ( $(this).hasClass("hide") == false ) {
